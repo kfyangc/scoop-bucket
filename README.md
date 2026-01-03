@@ -1,3 +1,22 @@
+# What will be put in this bucket?
+
+Here are some Scoop buckets that I find useful:
+
+```
+main       https://gitee.com/scoop-bucket/main.git
+extras     https://gitee.com/scoop-bucket/extras.git
+versions   https://gitee.com/scoop-bucket/versions.git
+nerd-fonts https://gitee.com/scoop-bucket/nerd-fonts.git
+java       https://gitee.com/scoop-bucket/java.git
+ar         https://github.com/arch3rPro/PST-Bucket
+lemon      https://github.com/hoilc/scoop-lemon
+abyss      https://gitee.com/abgox/abyss
+extras-cn  https://gitee.com/scoop-installer/scoopet.git
+zed        https://github.com/sonyxu/zed-loc-bucket
+```
+
+If apps are not available in the above buckets and I find them useful, I will add them in this bucket.
+
 # Scoop Bucket Template
 
 <!-- Uncomment the following line after replacing placeholders -->
