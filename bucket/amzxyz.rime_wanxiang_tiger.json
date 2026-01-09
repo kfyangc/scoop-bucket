@@ -10,10 +10,6 @@
         "After installation, update, or uninstallation, you need to redeploy in Rime Weasel",
         "Recommended to install the Wanxiang syntax model: abyss/amzxyz.rime_wanxiang.model"
     ],
-    "notes-cn": [
-        "安装/更新/卸载后都需要在小狼毫中进行重新部署",
-        "推荐安装万象语法模型：abyss/amzxyz.rime_wanxiang.model"
-    ],
     "depends": "abyss/Rime.Weasel",
     "suggest": {
         "model": "abyss/amzxyz.rime_wanxiang.model"
@@ -82,9 +78,6 @@
             "arm64": {
                 "url": "https://github.com/amzxyz/rime_wanxiang/releases/download/v$version/rime-wanxiang-tiger-fuzhu.zip"
             }
-        },
-        "hash": {
-            "mode": "github"
         }
     }
 }
