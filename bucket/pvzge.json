@@ -15,8 +15,8 @@
         ]
     ],
     "checkver": {
-        "url": "https://storage.pvzge.com/",
-        "regex": "pvzge-([\\d.]+)\\.zip"
+        "github": "https://github.com/Gzh0821/pvzg_site",
+        "pre_release": true
     },
     "autoupdate": {
         "url": "https://storage.pvzge.com/pvzge-$version.zip"
