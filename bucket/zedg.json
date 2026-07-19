@@ -16,7 +16,7 @@
     "bin": [
         [
             "bin\\Zed.exe",
-            "zed"
+            "zedg"
         ]
     ],
     "shortcuts": [
