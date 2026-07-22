@@ -9,8 +9,16 @@
             "hash": "b94cd0a76796a35a969a65c0ffd5ed46128e8da6314231a0687208c14994330e"
         }
     },
-    "shortcuts": [["blivechat/blivechat.exe", "blivechat"]],
-    "persist": ["blivechat/data", "blivechat/log"],
+    "shortcuts": [
+        [
+            "blivechat/blivechat.exe",
+            "blivechat"
+        ]
+    ],
+    "persist": [
+        "blivechat/data",
+        "blivechat/log"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
