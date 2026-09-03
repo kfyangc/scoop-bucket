@@ -54,4 +54,6 @@ CI 会检出全部文件并用 Pester 跑 `bin/test.ps1`（scoop core 的标准 
 - 新增：`Add <name> manifest`
 - 更新：`<name>: Update to version <version>`
 
+**每次 push 之前必须先把改动（`git diff` / `git show`）和提交信息给用户 review，经确认后才能推送。**不允许 commit 后直接 push。
+
 上游新版本由 Excavator 工作流每 4 小时自动检查并提交，日常不用手动跟版本；只需保证 manifest 的 `checkver`/`autoupdate` 写对。
