@@ -23,12 +23,12 @@
 # 1. 语法与字段能被 scoop 解析
 scoop info <name>
 
-# 2. schema 校验（与 CI 相同的校验器）
-powershell -NoProfile -Command "Add-Type -Path 'C:/Users/yang/scoop/apps/scoop/current/supporting/validator/bin/Scoop.Validator.dll'; $v = New-Object Scoop.Validator('C:/Users/yang/scoop/apps/scoop/current/schema.json', $true); $v.Validate('bucket/<name>.json'); $v.Errors | ForEach-Object { $_.Message }; 'Valid: ' + $v.Valid"
-# 注意：schema.json 在 scoop 安装根目录，不在 test/ 下
+# 2. schema 校验（与 CI 相同的校验器；$SCOOP 为 scoop 安装目录，已设为全局环境变量）
+powershell -NoProfile -Command "Add-Type -Path \"\$env:SCOOP/apps/scoop/current/supporting/validator/bin/Scoop.Validator.dll\"; \$v = New-Object Scoop.Validator(\"\$env:SCOOP/apps/scoop/current/schema.json\", \$true); \$v.Validate('bucket/<name>.json'); \$v.Errors | ForEach-Object { \$_.Message }; 'Valid: ' + \$v.Valid"
+# 注意：schema.json 在 scoop 程序目录（apps/scoop/current），不在 test/ 下
 
 # 3. 完整测试套件（需先 Install-Module Pester 5.2.0 和 BuildHelpers 2.0.1）
-SCOOP_HOME="C:/Users/yang/scoop/apps/scoop/current" powershell -NoProfile -ExecutionPolicy Bypass -File bin/test.ps1
+SCOOP_HOME="$SCOOP/apps/scoop/current" powershell -NoProfile -ExecutionPolicy Bypass -File bin/test.ps1
 ```
 
 ## 验证文件格式（推送前必做，防止 CI 失败）
