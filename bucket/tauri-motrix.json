@@ -1,5 +1,5 @@
 {
-    "version": "0.2.4",
+    "version": "-",
     "description": "A full-featured download manager based on Tauri.",
     "homepage": "https://github.com/Taoister39/tauri-motrix",
     "license": "GPL-3.0-only",
