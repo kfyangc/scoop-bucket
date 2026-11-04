@@ -10,6 +10,9 @@
         }
     },
     "bin": "zcode-proxy.exe",
+    "pre_install": [
+        "if (!(Test-Path \"$dir/config.yaml\")) { New-Item \"$dir/config.yaml\" | Out-Null }"
+    ],
     "env_set": {
         "ZCODE_PROXY_CONFIG": "$dir\\config.yaml"
     },
