@@ -10,6 +10,10 @@
         }
     },
     "bin": "zcode-proxy.exe",
+    "env_set": {
+        "ZCODE_PROXY_CONFIG": "$dir\\config.yaml"
+    },
+    "persist": "config.yaml",
     "checkver": {
         "url": "https://api.github.com/repos/TriDefender/zcode-api/releases",
         "jsonpath": "$..tag_name",
