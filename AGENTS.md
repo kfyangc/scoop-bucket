@@ -39,6 +39,18 @@ SCOOP_HOME="$SCOOP/apps/scoop/current" powershell -NoProfile -ExecutionPolicy By
 sed -i -e 's/\r*$/\r/' <文件>
 ```
 
+## manifest 的坑
+
+- **`persist` 一个安装时不存在的文件会被建成目录**：程序运行时读该路径报 `EISDIR`（教训：zcode-proxy 的 `config.yaml`）。需在 `pre_install` 预创建空文件：
+    ```json
+    "pre_install": [
+        "if (!(Test-Path \"$dir/config.yaml\")) { New-Item \"$dir/config.yaml\" | Out-Null }"
+    ]
+    ```
+    前提是程序能接受空配置文件（能自动重建配置才行）；否则 pre_install 里写入最小合法内容。注意 manifest 同版本改动不会自动生效，验证时要 `scoop update <name> --force`。
+- **程序把配置写到 cwd 或 `~/.xxx` 的，不要加 `persist`**：persist 只对程序往安装目录里写的文件有效（scoop 挂链接），管不到 cwd 和 home 目录。这类程序想固定配置路径，用 `env_set` + `$dir` 占位符配合 persist（参考 `bucket/zcode-proxy.json`）。`env_set`/`env_add` 的卸载清理 scoop 自动做，卸载时实测会删掉对应用户环境变量。
+- **checkver 默认写 `"github"`**，特殊处理是例外。仅当上游存在后缀/变体 tag（如 `v4.8.8.android`，只带 apk 资产）且 `releases/latest` 恰好返回这种 tag 时，才改用 releases API + jsonpath + 正则锚定结尾过滤（参考 `bucket/zcode-proxy.json`）。新增 manifest 时先 `gh api repos/<owner>/<repo>/releases/latest --jq .tag_name` 确认 latest 是否正常。
+
 ## CI（Tests 工作流）的坑
 
 CI 会检出全部文件并用 Pester 跑 `bin/test.ps1`（scoop core 的标准 bucket 测试）。除了 schema，还检查**仓库里所有文本文件**的编码/格式，任何一项不过整个 run 失败：
